@@ -22,5 +22,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./  # 部署整个仓库
         publish_branch: gh-pages  # 部署到的分支
-        cname: richfan.site  # 可选：自定义域名
-        enable_jekyll: true  # 重要：禁用Jekyll处理
+        # cname: richfan.site  # 可选：自定义域名
+        # enable_jekyll: true  # 重要：禁用Jekyll处理
