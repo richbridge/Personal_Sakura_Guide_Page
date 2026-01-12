@@ -1,34 +1,20 @@
-name: Deploy to GitHub Pages
+name: Deploy static site
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-
-    # 如果有依赖需要安装（如React/Vue项目）
-    - name: Install Dependencies
-      run: npm install  # 或 yarn install
-      
-    - name: Build
-      run: npm run build  # 或 yarn build
-
-    - name: Deploy to GitHub Pages
+    - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist  # 构建输出的目录
-        # publish_branch: gh-pages  # 可选，默认gh-pages
+        publish_dir: ./  # 直接部署根目录文件
+        keep_files: false  # 是否保留之前部署的文件
